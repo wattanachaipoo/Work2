@@ -1,0 +1,41 @@
+.w3-container1
+{
+    margin-left: 350px;
+}
+
+.w3-padding-487{
+    margin-right: 350px;
+
+}
+
+.icon img{
+    height: 50%;
+    position: relative;
+    left: 50%;
+    bottom: 50%;
+    transform: translate(-50%);
+    position: relative;
+    height: 100vh; /* Adjust as needed */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.facebook-icon {
+    font-size: 8em;
+    color:blue;
+}
+.facebook-icon:hover {
+    color: white;
+
+}
+
+.instagram-icon {
+    font-size: 8em;
+    color:#f06292;
+    margin-left: 30px;
+
+}
+.instagram-icon:hover {
+    color: white;
+
+}

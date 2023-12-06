@@ -1,0 +1,516 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>Plotfolio</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Raleway">
+  <link rel="shortcut icon" href="https://cdn-icons-png.flaticon.com/512/3135/3135715.png" type="image/x-icon">
+  <style>
+    body,
+    h1,
+    h5 {
+      font-family: "Raleway", sans-serif
+    }
+
+    body,
+    html {
+      height: 100%
+    }
+
+    .bgimg {
+      background-image: url('./space.png');
+      min-height: 100%;
+      background-position: center;
+      background-size: cover;
+    }
+    
+  </style>
+</head>
+
+<body>
+
+  <div class="bgimg w3-display-container w3-text-white">
+    <div class="w3-display-middle w3-jumbo">
+      <p>wattanachai chumpon</p>
+    </div>
+    <div class="w3-display-topleft w3-container w3-xlarge">
+      <p><button onclick="document.getElementById('menu').style.display='block'"
+          class="w3-button w3-black">JAVA</button></p>
+      <p><button onclick="document.getElementById('api').style.display='block'" class="w3-button w3-black">API</button>
+      </p>
+      <p><button onclick="document.getElementById('chart').style.display='block'"
+          class="w3-button w3-black">CHART</button></p>
+      <p><button onclick="document.getElementById('contact').style.display='block'"
+          class="w3-button w3-black">contact</button></p>
+    </div>
+  </div>
+
+  <!-- Menu Modal -->
+  <div id="menu" class="w3-modal">
+    <div class="w3-modal-content w3-animate-zoom">
+      <div class="w3-container w3-black w3-display-container">
+        <span onclick="document.getElementById('menu').style.display='none'"
+          class="w3-button w3-display-topright w3-large">x</span>
+        <h1>The Document Object </h1>
+        <h2>The get ElementById() Method</h2>
+        <h3>A-Z</h3>
+      </div>
+      <div class="w3-container">
+        <p id="demo">All characters are printed!</p>
+        <br>
+        <br>
+        <script>
+          function printAlphabetWithDelay(callback) {
+            let currentCharCode = 65; // ASCII code for 'A'
+            function printNextChar() {
+              const char = String.fromCharCode(currentCharCode);
+              document.getElementById("demo").innerHTML = char;
+              currentCharCode++;
+              if (currentCharCode <= 90) {
+                setTimeout(printNextChar, 1000);
+              } else {
+                callback();
+              }
+            }
+            printNextChar();
+          }
+        </script>
+      </div>
+      <div class="w3-container w3-black">
+        <h1>ชื่ออ</h1>
+      </div>
+      <div class="w3-container">
+        <p id="demo3">ชื่อ</p>
+        <button onclick="onComplete()">เช็คชื่อ</button>
+        <br><br>
+        <script>
+          function onComplete() {
+            document.getElementById("demo3").innerHTML =
+              " นาย วัฒนชัย ชุมพล มหาวิทยาลัยเทคโนโลยีราชมงคลอีสาน วิทยาเขตขอนแก่น";
+          }
+          printAlphabetWithDelay(onComplete);
+
+          function Random() {
+            function random() {
+              const เลขลูกเต๋า = Math.floor(Math.random() * 6) + 1;
+              return เลขลูกเต๋า;
+            }
+
+            const randomdice = random();
+            document.getElementById("demo2").innerHTML = randomdice;
+          }
+
+        </script>
+      </div>
+      <div class="w3-container w3-black">
+        <h1>ความยาวเส้นทแยงมุม</h1>
+      </div>
+      <div class="w3-container">
+        <h2>ความยาวเส้นทแยงมุมคือ</h2>
+        <div>
+          <label for="height">ความสูง:</label>
+          <input type="number" id="height" placeholder="ป้อนความสูง">
+        </div>
+
+        <div>
+          <label for="width">ความยาว:</label>
+          <input type="number" id="width" placeholder="ป้อนความยาว">
+        </div>
+
+        <button onclick="calculateDiagonal()">คำนวณ</button>
+
+        <div id="result-container"></div>
+
+        <script>
+          function findDiagonalLength(width, height) {
+            return Math.sqrt(Math.pow(width, 2) + Math.pow(height, 2));
+          }
+
+          function calculateDiagonal() {
+            const heightInput = document.getElementById('height');
+            const widthInput = document.getElementById('width');
+            const resultContainer = document.getElementById('result-container');
+
+            const height = parseFloat(heightInput.value);
+            const width = parseFloat(widthInput.value);
+
+            if (!isNaN(height) && !isNaN(width)) {
+              const diagonal = findDiagonalLength(width, height);
+              resultContainer.innerHTML = `<p>ความยาวเส้นทแยงมุมคือ: ${diagonal.toFixed(2)}</p>`;
+            } else {
+              resultContainer.innerHTML = '<p>โปรดป้อนค่าที่ถูกต้อง</p>';
+            }
+          }
+
+
+        </script>
+        <br>
+
+        <div class="w3-container w3-black">
+          <h1>Day to Second</h1>
+        </div>
+        <div class="w3-container">
+          <br>
+          <form id="daysForm">
+            <label for="daysInput">Enter days:</label>
+            <input type="number" id="daysInput" min="0" required>
+            <button type="submit">Convert</button>
+          </form>
+          <p id="result"></p>
+          <script>
+            function daysToSeconds(days) {
+              const secondsInMinute = 60;
+              const minutesInHour = 60;
+              const hoursInDay = 24;
+              const seconds = days * hoursInDay * minutesInHour * secondsInMinute;
+              return seconds;
+            }
+
+            const daysForm = document.getElementById('daysForm');
+            const resultElement = document.getElementById('result');
+
+            daysForm.addEventListener('submit', function (event) {
+              event.preventDefault();
+
+              const daysInput = document.getElementById('daysInput');
+              const days = parseFloat(daysInput.value);
+
+              if (!isNaN(days)) {
+                const seconds = daysToSeconds(days);
+                resultElement.textContent = `${days} days is equal to ${seconds} seconds.`;
+              } else {
+                resultElement.textContent = 'Please enter a valid number of days.';
+              }
+            });
+          </script>
+          <br>
+          <div class="w3-container w3-black">
+            <h1>Fahrenheit</h1>
+          </div>
+          <br>
+          <div class="w3-container">
+            <form id="converterForm">
+              <label for="fahrenheitInput">Enter Fahrenheit Temperature:</label>
+              <input type="text" id="fahrenheitInput" name="fahrenheitInput" placeholder="Enter temperature">
+              <button type="button" onclick="convertTemperature()">Convert</button>
+            </form>
+            <div id="resultContainer"></div>
+            <br>
+            <script>
+              function fahrenheitToCelsius(fahrenheit) {
+                return (fahrenheit - 32) * 5 / 9;
+              }
+
+              function convertTemperature() {
+                // ดึงค่า Fahrenheit จาก input element
+                var fahrenheitTemperature = parseFloat(document.getElementById('fahrenheitInput').value);
+
+                // เรียกใช้ฟังก์ชันแปลงอุณหภูมิ
+                var celsiusTemperature = fahrenheitToCelsius(fahrenheitTemperature);
+
+                // แสดงผลลัพธ์ใน HTML
+                var resultContainer = document.getElementById('resultContainer');
+                resultContainer.innerHTML = `<p>${fahrenheitTemperature.toFixed(2)} องศา Fahrenheit เท่ากับ ${celsiusTemperature.toFixed(2)} องศา Celsius</p>`;
+              }
+            </script>
+            <br>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+  <!-- CHART -->
+  <div id="chart" class="w3-modal">
+    <div class="w3-modal-content w3-animate-zoom">
+      <div class="w3-container w3-black">
+        <span onclick="document.getElementById('chart').style.display='none'"
+          class="w3-button w3-display-topright w3-large">x</span>
+        <div>
+          <canvas id="myChart"></canvas>
+        </div>
+        <div>
+          <canvas id="myChart2"></canvas>
+        </div>
+
+        <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+        <script>
+          const ctx = document.getElementById('myChart');
+
+          new Chart(ctx, {
+            type: 'bar',
+            data: {
+              labels: ['Red', 'Blue', 'Yellow', 'Green', 'Purple', 'Orange'],
+              datasets: [{
+                label: '# of Votes',
+                data: [12, 19, 3, 5, 2, 3],
+                borderWidth: 1
+              }]
+            },
+            options: {
+              scales: {
+                y: {
+                  beginAtZero: true
+                }
+              }
+            }
+          });
+          document.addEventListener('DOMContentLoaded', function () {
+            fetch('https://raw.githubusercontent.com/samayo/country-json/master/src/country-by-yearly-average-temperature.json')
+              .then(response => response.json())
+              .then(data => {
+                const countries = data.map(entry => entry.country);
+                const temperatures = data.map(entry => entry.temperature);
+
+                const ctx = document.getElementById('myChart2').getContext('2d');
+                new Chart(ctx, {
+                  type: 'line',
+                  data: {
+                    labels: countries,
+                    datasets: [{
+                      label: 'Temperature (°C) In World',
+                      data: temperatures,
+                      backgroundColor: 'rgba(75, 192, 192, 0.2)',
+                      borderColor: 'rgba(85, 192, 192, 1)',
+                      borderWidth: 2
+                    }]
+                  },
+                  options: {
+                    scales: {
+                      y: {
+                        beginAtZero: true
+                      }
+                    }
+                  }
+                });
+              })
+              .catch(error => console.error('Error fetching data:', error));
+          });
+        </script>
+        <br><br><br><br>
+        <script>
+        </script>
+      </div>
+      </form>
+    </div>
+  </div>
+  </div>
+
+
+
+  <!-- API -->
+  <div id="api" class="w3-modal">
+    <div class="w3-modal-content w3-animate-zoom">
+      <div class="w3-container w3-black">
+        <span onclick="document.getElementById('api').style.display='none'"
+          class="w3-button w3-display-topright w3-large">x</span>
+        <h1>API</h1>
+      </div>
+      <div class="w3-container">
+        <!-- Image -->
+        <h2>
+          getRandomImage
+        </h2>
+        <button id="getRandomImage">Get Random Image</button>
+        <img id="randomImage" alt="Random Image">
+        <script>
+          const getRandomImageButton = document.getElementById('getRandomImage');
+          const randomImage = document.getElementById('randomImage');
+
+          getRandomImageButton.addEventListener('click', () => {
+            getRandomImage();
+          });
+
+          function getRandomImage() {
+            // ตัวอย่าง API สำหรับรูปภาพสุ่ม (ในที่นี้ใช้ Picsum)
+            fetch('https://picsum.photos/200/300')
+              .then(response => {
+                // กรณีต้องการใช้ API อื่น ๆ ท่านต้องแก้ URL ให้เป็น URL ของ API นั้น
+                // ตรงนี้เป็นตัวอย่างเท่านั้น
+                if (!response.ok) {
+                  throw new Error('Failed to fetch image');
+                }
+                return response.blob();
+              })
+              .then(blob => {
+                // แปลง Blob เป็น URL ของรูปภาพ
+                const imageUrl = URL.createObjectURL(blob);
+                randomImage.src = imageUrl;
+              })
+              .catch(error => {
+                console.error('Error:', error);
+              });
+          }
+        </script>
+        <!-- end -->
+        <br>
+        <hr>
+        <!-- Sheet -->
+        <h1>google sheet</h1>
+        <form method="POST" id="my-form"
+          action="https://script.google.com/macros/s/AKfycbz3AURIDy74fkuj4yue2u4O1sImAALy0oGa7JvPZYwDq0z_RjLwM7KddrnM3cue0xOQgQ/exec">
+          <input name="Email" type="email" placeholder="Email" required>
+          <input name="Name" type="text" placeholder="Name" required>
+          <button type="submit">Send</button>
+        </form>
+        <br>
+        <iframe
+          src="https://docs.google.com/spreadsheets/d/e/2PACX-1vSF91oDXh-k-llyfluPIJrafpIn256OxbbSTupVJjTvi7G5RCoYu3w2Q3uHx-NJ-Wp6G4847iqocTIA/pubhtml?gid=0&amp;single=true&amp;widget=true&amp;headers=false"></iframe>
+
+        <script>
+          window.addEventListener("load", function () {
+            const form = document.getElementById('my-form');
+            form.addEventListener("submit", function (e) {
+              e.preventDefault();
+              const data = new FormData(form);
+              const action = e.target.action;
+              fetch(action, {
+                method: 'POST',
+                body: data,
+              })
+                .then(() => {
+                  alert("Success!");
+                })
+            });
+          });
+        </script>
+        <!-- end -->
+        <br><br><br>
+        <hr>
+        <!-- text -->
+        <h1 class="ranim1">Random Text</h1>
+        <div id="myText" alt="Text from API">Text from API</div>
+        <button class="ranim2" id="updateButton">Update</button>
+        <hr>
+        <br>
+        <script>
+          document.addEventListener("DOMContentLoaded", function () {
+            const textElement = document.getElementById("myText");
+            const updateButton = document.getElementById("updateButton");
+
+            const updateDataFromAPI = () => {
+                fetch('https://baconipsum.com/api/?type=all-meat&paras=1')
+                    .then(response => response.json())
+                    .then(data => {
+                        const randomText = data[0];
+                        textElement.textContent = randomText;
+                        console.log('Random text:', randomText);
+                    })
+                    .catch(error => console.error('Error fetching data from API:', error));
+            };
+            updateButton.addEventListener("click", updateDataFromAPI);
+            updateDataFromAPI();
+        });
+        </script>
+        <!-- end -->
+        <br>
+        <hr>
+        <h1>Agify Data</h1>
+        <div>
+            <label for="name">Enter a name: </label>
+            <input type="text" id="name" placeholder="Type a name">
+            <button onclick="fetchAgifyData()">Get Agify Data</button>
+        </div>
+        <div id="agifyData"></div>
+        <script>
+          function fetchAgifyData() {
+              var name = document.getElementById('name').value;
+              if (name.trim() === "") {
+                  alert("Please enter a name");
+                  return;
+              }
+      
+              fetch(`https://api.agify.io?name=${name}`)
+                  .then(response => response.json())
+                  .then(data => {
+                      displayAgifyData(data);
+                  })
+                  .catch(error => {
+                      console.error('Error fetching data:', error);
+                      alert('Error fetching data. Please try again.');
+                  });
+          }
+      
+          function displayAgifyData(data) {
+              var agifyDataDiv = document.getElementById('agifyData');
+              var age = data.age;
+              var count = data.count;
+      
+              agifyDataDiv.innerHTML = `<p>The predicted age for the name is ${age} with ${count} occurrences.</p>`;
+          }
+      </script>
+
+        <!-- Crypto -->
+        <h2>Crypto Prices</h2>
+        <div id="cryptoPrices"></div>
+        <hr>
+
+        <canvas id="priceChart" width="100%" height="400"></canvas>
+        <br><br>
+        <script>
+          function fetchData() {
+            fetch('https://www.okx.com/api/v5/market/tickers?instType=SPOT')
+                .then(response => response.json())
+                .then(data => {
+                    const interestedCoins = ['BTC-USDT', 'LUNA-USDC', 'ADA-USDT'];
+                    const filteredData = data.data.filter(item => interestedCoins.includes(item.instId));
+    
+                    displayCryptoPrices(filteredData);
+                    updateChart(filteredData);
+                })
+        }
+    
+        function displayCryptoPrices(data) {
+            var cryptoPricesDiv = document.getElementById('cryptoPrices');
+            var pricesHtml = '<ul>';
+    
+            data.forEach(item => {
+                pricesHtml += `<li>${item.instId}: ${item.last}</li>`;
+            });
+    
+            pricesHtml += '</ul>';
+            cryptoPricesDiv.innerHTML = pricesHtml;
+        }
+    
+        function updateChart(data) {
+            var labels = data.map(item => item.instId);
+            var values = data.map(item => parseFloat(item.last));
+        }
+    
+        fetchData();
+        setInterval(fetchData, 3000);
+        </script>
+        <!-- end -->
+      
+      </div>
+    </div>
+  </div>
+
+
+
+  <!-- Contact Modal -->
+  <div id="contact" class="w3-modal">
+    <div class="w3-modal-content w3-animate-zoom">
+      <div class="w3-container w3-black">
+        <span onclick="document.getElementById('contact').style.display='none'"
+          class="w3-button w3-display-topright w3-large">x</span>
+        <h1>Contact</h1>
+      </div>
+      <div class="w3-container">
+        <p>Email: wattanachai.ch@rmuti.ac.th</p>
+        <p>Facebook: wattanachai chumpon</p>
+        <p>IG : wc_cp1931</p>
+        <p>บ๊ะบุ้ย</p>
+        </form>
+      </div>
+    </div>
+  </div>
+
+</body>
+
+</html>
